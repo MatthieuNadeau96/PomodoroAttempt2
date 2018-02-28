@@ -53,7 +53,6 @@ class NotificationUtil {
                     0, stopIntent, PendingIntent.FLAG_UPDATE_CURRENT)
 
             val pauseIntent = Intent(context, TimerNotificationActionReceiver::class.java)
-            stopIntent.action = AppConstants.ACTION_PAUSE
             val pausePendingIntent = PendingIntent.getBroadcast(context,
                     0, pauseIntent, PendingIntent.FLAG_UPDATE_CURRENT)
 
@@ -127,7 +126,7 @@ class NotificationUtil {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
                 val channelImportance = if (playSound) NotificationManager.IMPORTANCE_DEFAULT
                 else NotificationManager.IMPORTANCE_LOW
-                var nChannel = NotificationChannel(channelId, channelName, channelImportance)
+                val nChannel = NotificationChannel(channelId, channelName, channelImportance)
                 nChannel.enableLights(true)
                 nChannel.lightColor = Color.BLUE
                 this.createNotificationChannel(nChannel)
